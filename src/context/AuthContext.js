@@ -8,7 +8,6 @@ import {
 } from "firebase/auth";
 import { db } from "../firebase";
 import { setDoc, doc, getDoc } from "firebase/firestore";
-import { async } from "@firebase/util";
 // useAuth Hook declaration
 const AuthContext = createContext();
 export const useAuth = () => {
@@ -26,13 +25,6 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(user);
       setLoading(false);
     });
-    // async function getUserType(currentUser) {
-    //   const docRef = doc(db, "users", currentUser.uid);
-    //   const docSnap = await getDoc(docRef);
-    //   console.log(docSnap.data().type);
-    //   setCurrentUser({ ...currentUser, type: docSnap.data().type });
-    // }
-    // getUserType(currentUser);
     return unsubscirbe;
   }, []);
 
